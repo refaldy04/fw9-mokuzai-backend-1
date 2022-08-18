@@ -1,4 +1,5 @@
 const router = require("express").Router();
+// console.log("a");
 
 // router.use('/',require('./product'));
 // router.use('/',require('./chat'));
