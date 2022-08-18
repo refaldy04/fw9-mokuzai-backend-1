@@ -16,7 +16,6 @@ const userValidation = [
 ];
 
 console.log(authController.register);
-console.log("a");
 auth.post("/register", ...userValidation, authController.register);
 auth.post("/login", authController.login);
 
