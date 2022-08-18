@@ -6,19 +6,16 @@ const { validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// console.log("b");
+
 exports.register = (req, res) => {
-  const validation = validationResult(req);
-  if (!validation.isEmpty()) {
-    // is empty menandakan tidak ada error
-    console.log(validation.array());
-    return response(res, "Error occured", validation.array(), null, 400);
-  }
+  console.log(req.body);
   userModel.createUsers(req.body, (err, userResult) => {
-    req.body.pin = null;
+    console.log("abc");
     if (err) {
       return errorResponse(err, res);
     }
-    // console.log(userResult[0].id);
+
     profileModel.createProfileAfterRegister(userResult[0].id, (err, result) => {
       return response(res, "Good Job", userResult);
     });
