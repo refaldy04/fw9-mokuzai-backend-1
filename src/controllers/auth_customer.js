@@ -2,11 +2,6 @@ const userModel = require("../models/users");
 const profileModel = require("../models/profile");
 const response = require("../helpers/standardResponse");
 const errorResponse = require("../helpers/errorResponse");
-const { validationResult } = require("express-validator");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-
-// console.log("b");
 
 exports.register = (req, res) => {
   console.log(req.body);
