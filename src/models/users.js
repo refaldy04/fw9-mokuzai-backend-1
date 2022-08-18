@@ -15,3 +15,18 @@ exports.createUsers = (data, cb) => {
     }
   });
 };
+
+exports.createCart = (data, cb) => {
+  const query = "INSERT INTO cart (user_id) VALUES($1) RETURNING *";
+  const value = [data];
+  console.log(value);
+  db.query(query, value, (err, res) => {
+    if (res) {
+      // console.log(res);
+      cb(err, res.rows);
+    } else {
+      console.log(err);
+      cb(err);
+    }
+  });
+};

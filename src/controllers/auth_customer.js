@@ -17,7 +17,10 @@ exports.register = (req, res) => {
     }
 
     profileModel.createProfileAfterRegister(userResult[0].id, (err, result) => {
-      return response(res, "Good Job", userResult);
+      // return response(res, "Good Job", userResult);
+      userModel.createCart(userResult[0].id, (err, result) => {
+        return response(res, "my pleasure", userResult);
+      });
     });
   });
 };

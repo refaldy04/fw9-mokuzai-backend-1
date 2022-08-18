@@ -1,5 +1,5 @@
 const auth = require("express").Router();
-const authController = require("../controllers/auth");
+const authController = require("../controllers/auth_customer");
 const { body } = require("express-validator");
 const bcrypt = require("bcrypt");
 // hahahahahah
