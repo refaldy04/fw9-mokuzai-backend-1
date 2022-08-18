@@ -4,7 +4,7 @@ const response = (res, msg, results, pageInfo, status=200) => {
   if(status >= 400){
     success = false;
   }
-//
+
   const data ={
     success,
     message: msg,

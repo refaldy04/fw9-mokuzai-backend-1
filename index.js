@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const {PORT: port} = process.env;
 const express = require('express');
-const db = require('./src/helpers/db');
+// const db = require('./src/helpers/db');
 const app = express();
 const cors = require('cors');
 global.__basepath = __dirname;
@@ -18,7 +18,7 @@ app.get('/',(req,res)=>{
   });
 });
 
-app.use('/',require('./src/routers'));
+app.use('/', require('./src/routers'));
 
 app.use('*',(req, res)=>{
   return res.status(404).json({
