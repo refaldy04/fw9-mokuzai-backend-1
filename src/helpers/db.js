@@ -11,3 +11,4 @@ Query.prototype.submit = function () {
 };
 
 module.exports = db;
+
