@@ -14,3 +14,13 @@ exports.addChart = (req, res) => {
     return response(res, "good job", result);
   });
 };
+
+exports.getChartById = (req, res) => {
+  // console.log(req.params);
+  const { user_id } = req.params;
+
+  // return response(res, "Good Job", userResult);
+  transactionModel.getCartById(user_id, (err, result) => {
+    return response(res, "good job", result);
+  });
+};

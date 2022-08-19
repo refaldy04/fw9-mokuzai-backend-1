@@ -14,3 +14,10 @@ exports.createCart = (data, cb) => {
     }
   });
 };
+
+exports.getCartById = (id, cb) => {
+  db.query("SELECT * FROM cart WHERE user_id=$1", [id], (err, res) => {
+    // console.log(res);
+    cb(err, res.rows);
+  });
+};
