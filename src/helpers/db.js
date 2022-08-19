@@ -1,3 +1,4 @@
+
 const { Pool, Query } = require("pg");
 const { DATABASE_URL: connectionString } = process.env;
 const db = new Pool({ connectionString });
@@ -11,3 +12,4 @@ Query.prototype.submit = function () {
 };
 
 module.exports = db;
+

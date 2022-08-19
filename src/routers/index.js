@@ -1,6 +1,6 @@
 const router = require("express").Router();
-// console.log("a");
 
+router.use('/profile', require('./profile'));
 router.use("/auth", require("./auth_seller"));
 router.use("/auth", require("./auth_customer"));
 router.use("/add_chart", require("./transaction"));
