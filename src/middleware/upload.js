@@ -1,5 +1,5 @@
 
-const upload = require('../helpers/upload').array('photo');
+const upload = require('../helpers/upload').array('picture');
 const response = require('../helpers/standardResponse');
 
 const uploadPhoto = (req,res,next)=>{

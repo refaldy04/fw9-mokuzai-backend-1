@@ -3,7 +3,7 @@ const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(global.__basepath, 'assets', 'uploads'));
+    cb(null, path.join(global.__basepath, 'assets', 'images'));
   },
   filename: (req, file, cb) => {
     const timestamp = new Date().getTime();
@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, `${timestamp}.${ext}`);
   },
 });
-//
+
 const upload = multer({
   storage,
   limits: {

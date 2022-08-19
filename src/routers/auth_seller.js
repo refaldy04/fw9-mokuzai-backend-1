@@ -28,7 +28,6 @@ const loginValidator =  [
 ];
 
 auth_seller.post('/register_seller', ...registerSellerValidator, validationCheck, authController.registerSeller);
-// auth_seller.post('/register', ...registValidator, validationCheck, authController.register);
 auth_seller.post('/login', ...loginValidator, validationCheck, authController.login);
 
 module.exports = auth_seller ;
