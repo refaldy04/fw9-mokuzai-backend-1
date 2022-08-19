@@ -1,9 +1,9 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
-// router.use('/',require('./product'));
-// router.use('/',require('./chat'));
-// router.use('/auth', require('./auth'));
 router.use('/profile', require('./profile'));
+router.use("/auth", require("./auth_seller"));
+router.use("/auth", require("./auth_customer"));
+router.use("/add_chart", require("./transaction"));
+router.use("/get_chart", require("./transaction"));
 
 module.exports = router;
-//
