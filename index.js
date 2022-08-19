@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const {PORT: port} = process.env;
 const express = require('express');
-const db = require('./src/helpers/db');
+// const db = require('./src/helpers/db');
 const app = express();
 const cors = require('cors');
 global.__basepath = __dirname;
