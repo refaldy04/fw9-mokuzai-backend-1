@@ -1,5 +1,5 @@
-const auth_seller = require('express').Router();
-const authController = require('../controllers/auth_seller');
+const auth = require('express').Router();
+const authController = require('../controllers/auth');
 const { body } = require('express-validator');
 const bcrypt = require('bcrypt');
 const validationCheck = require('../middleware/checkValidation');
@@ -27,9 +27,20 @@ const loginValidator =  [
     .exists({checkFalsy: true}).withMessage('Enter a Password')
 ];
 
-auth_seller.post('/register_seller', ...registerSellerValidator, validationCheck, authController.registerSeller);
-// auth_seller.post('/register', ...registValidator, validationCheck, authController.register);
-auth_seller.post('/login', ...loginValidator, validationCheck, authController.login);
+const userValidation = [
+  body('email').isEmail().withMessage('Email format invalid'),
+  body('password')
+    .isLength({ min: 4 })
+    .withMessage('password length min 4 character')
+    .customSanitizer(async (val) => {
+      const hash = await bcrypt.hash(val, 10);
+      return hash;
+    }),
+];
+auth.post('/register_seller', ...registerSellerValidator, validationCheck, authController.registerSeller);
+auth.post('/register_costumer', ...userValidation, validationCheck, authController.register_costumer);
+auth.post('/login', ...loginValidator, validationCheck, authController.login);
 
-module.exports = auth_seller ;
+
+module.exports = auth ;
 

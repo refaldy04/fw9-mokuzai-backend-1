@@ -1,4 +1,3 @@
-
 const db = require ('../helpers/db');
 
 exports.getAllProfile = (cb) => {
@@ -23,6 +22,7 @@ exports.createProfiles = (data, picture, cb)=>{
   const obj = {
     picture,
     gender: data.gender,
+    name: data.name,
     store_name: data.store_name,
     store_desc: data.store_desc,
   };
@@ -54,6 +54,7 @@ exports.updateProfiles = (user_id, picture, data, cb)=>{
   const filtered = {};
   const obj = {
     picture,
+    name: data.name,
     gender: data.gender,
     store_name: data.store_name,
     store_desc: data.store_desc,
@@ -76,8 +77,8 @@ exports.updateProfiles = (user_id, picture, data, cb)=>{
   });
 };
 
-
 exports.createProfileAfterRegister = (data, cb) => {
+
   const query = 'INSERT INTO profile (user_id) VALUES($1) RETURNING *';
   const values = [data];
   db.query(query, values, (err, res) => {

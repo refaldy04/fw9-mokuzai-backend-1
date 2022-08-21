@@ -1,0 +1,633 @@
+{
+	"info": {
+		"_postman_id": "dd51e9f9-eb0a-4c1d-8d48-88522a163828",
+		"name": "MOKUZAI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/auth/login",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER SELLER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "default"
+								},
+								{
+									"key": "roles",
+									"value": "seller",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/auth/register_seller",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"auth",
+								"register_seller"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"disabled": true
+								},
+								{
+									"key": "roles",
+									"value": "seller",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTER COSTUMER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "costumer@costumer.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "default"
+								},
+								{
+									"key": "roles",
+									"value": "costumer",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/auth/register_costumer",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"auth",
+								"register_costumer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUCT",
+			"item": [
+				{
+					"name": "ALL PRODUCT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/product?search=makan",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product"
+							],
+							"query": [
+								{
+									"key": "searchBy",
+									"value": "product_name",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "makan"
+								},
+								{
+									"key": "sortBy",
+									"value": "product_name",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "ASC",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "50",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL PRODUCT BY SELLER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/product/ProductSeller?search&sortBy&sort&limit&page",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product",
+								"ProductSeller"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "makan",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": null
+								},
+								{
+									"key": "sortBy",
+									"value": null
+								},
+								{
+									"key": "sort",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL PRODUCT BY CATEGORY",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/product/:category_name",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product",
+								":category_name"
+							],
+							"variable": [
+								{
+									"key": "category_name",
+									"value": "xxx"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALL PRODUCT ARCHIVE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/product/archive/:archive_status",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product",
+								"archive",
+								":archive_status"
+							],
+							"variable": [
+								{
+									"key": "archive_status",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PRODUCT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/product",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PRODUCT",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "product_price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/ADMIN/Pictures/laporan juli agustus.PNG"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/product/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ARCHIVE PRODUCT",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "product_price",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/ADMIN/Pictures/laporan juli agustus.PNG"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/product/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PRODUCT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/product/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"product",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHAT",
+			"item": [
+				{
+					"name": "CREATE CHAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "seller_id",
+									"value": "15",
+									"type": "default"
+								},
+								{
+									"key": "chat",
+									"value": "tes chat",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/chat",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CHAT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/chat",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELET CHAT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/chat/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"chat",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PROFILE",
+			"item": [
+				{
+					"name": "GET ALL PROFILE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/profile",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PROFILE BY ID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PROFILE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "tohaa",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "shemale",
+									"type": "default"
+								},
+								{
+									"key": "store_name",
+									"value": "malese",
+									"type": "default"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/ADMIN/Pictures/jadwal.PNG"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/profile",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT PROFILE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "hhohoho",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "store_name",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/profile/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"profile",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "15"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
