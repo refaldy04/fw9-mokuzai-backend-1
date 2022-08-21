@@ -12,7 +12,7 @@ exports.registerSeller = (req,res) => {
     if(err){
       return errResponse(err,res);
     }
-    return response(res,'Create Success');
+    return response(res,'Create Seller Success');
   });
 };
 
@@ -40,7 +40,7 @@ exports.login = (req, res)=>{
 };
 
 
-exports.register = (req, res) => {
+exports.register_costumer = (req, res) => {
   console.log(req.body);
   userModel.createUsers(req.body, (err, userResult) => {
     console.log('abc');
@@ -51,7 +51,7 @@ exports.register = (req, res) => {
     profileModel.createProfileAfterRegister(userResult[0].id, (err, result) => {
       // return response(res, "Good Job", userResult);
       userModel.createCart(userResult[0].id, (err, result) => {
-        return response(res, 'my pleasure', userResult);
+        return response(res, 'Create Costumer Success', userResult);
       });
     });
   });

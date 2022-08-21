@@ -1,7 +1,5 @@
 const product = require('express').Router();
 const productController = require('../controllers/product');
-// const { body } = require('express-validator');
-// const validationCheck = require('../middleware/checkValidation');
 const upload = require('../middleware/upload');
 const authMiddle = require('../middleware/auth');
 

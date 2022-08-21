@@ -21,6 +21,7 @@ exports.createProfiles = (data, picture, cb)=>{
   const obj = {
     picture,
     gender: data.gender,
+    name: data.name,
     store_name: data.store_name,
     store_desc: data.store_desc,
   };
@@ -52,6 +53,7 @@ exports.updateProfiles = (id, picture, data, cb)=>{
   const filtered = {};
   const obj = {
     picture,
+    name: data.name,
     gender: data.gender,
     store_name: data.store_name,
     store_desc: data.store_desc,

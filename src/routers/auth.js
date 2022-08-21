@@ -38,7 +38,7 @@ const userValidation = [
     }),
 ];
 auth.post('/register_seller', ...registerSellerValidator, validationCheck, authController.registerSeller);
-auth.post('/register_costumer', ...userValidation, validationCheck, authController.register);
+auth.post('/register_costumer', ...userValidation, validationCheck, authController.register_costumer);
 auth.post('/login', ...loginValidator, validationCheck, authController.login);
 
 
