@@ -86,6 +86,26 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "costumer@costumer.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "default"
+								},
+								{
+									"key": "roles",
+									"value": "costumer",
+									"type": "default"
+								}
+							]
+						},
 						"url": {
 							"raw": "{{mokuzai}}/auth/register_costumer",
 							"host": [
@@ -369,6 +389,208 @@
 								{
 									"key": "id",
 									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CHAT",
+			"item": [
+				{
+					"name": "CREATE CHAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "seller_id",
+									"value": "15",
+									"type": "default"
+								},
+								{
+									"key": "chat",
+									"value": "tes chat",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/chat",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ALL CHAT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/chat",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"chat"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELET CHAT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/chat/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"chat",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PROFILE",
+			"item": [
+				{
+					"name": "GET ALL PROFILE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{mokuzai}}/profile",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PROFILE BY ID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PROFILE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "tohaa",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "shemale",
+									"type": "default"
+								},
+								{
+									"key": "store_name",
+									"value": "malese",
+									"type": "default"
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": "/C:/Users/ADMIN/Pictures/jadwal.PNG"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/profile",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT PROFILE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "hhohoho",
+									"type": "default"
+								},
+								{
+									"key": "gender",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "store_name",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "picture",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{mokuzai}}/profile/:id",
+							"host": [
+								"{{mokuzai}}"
+							],
+							"path": [
+								"profile",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "15"
 								}
 							]
 						}
