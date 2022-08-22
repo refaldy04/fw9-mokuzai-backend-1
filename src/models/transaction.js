@@ -24,8 +24,8 @@ exports.getCartById = (id, cb) => {
 
 exports.editQuantity = (data, cb) => {
   const query =
-    "UPDATE product_details SET product_stock=$1 WHERE id=$2 RETURNING *";
-  const value = [data.product_stock, data.id];
+    "UPDATE product_details SET product_stock=product_stock - $1  WHERE id=$2 RETURNING *";
+  const value = [data.stock_selled, data.id];
   db.query(query, value, (err, res) => {
     if (res) {
       // console.log(res);
