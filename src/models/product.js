@@ -289,7 +289,7 @@ exports.countProductByArchive=(archive_status,searchBy,keyword,cb)=>{
 
 
 exports.detailProduct = (id, cb) => {
-  const quer = `SELECT 
+  const quer = `SELECT product_details.id, 
   product_name,
   product_desc,
   product_price,
