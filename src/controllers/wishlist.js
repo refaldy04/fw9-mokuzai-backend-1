@@ -26,3 +26,19 @@ exports.getWishlistByIdAndProductId = (req,res) =>{
     return response(res, 'Product Wishlist',result.rows[0]);
   });
 };
+
+exports.addItemWishlist = (req, res) => {
+  const id = req.authUser.id;
+  // return response(res, "Good Job", userResult);
+  wishlistModels.addItemWishlist(id, req.body, (err, result) => {
+    return response(res, 'add Item to cart', result);
+  });
+};
+
+exports.deleteItemWishlist = (req,res) =>{
+  // const user = req.authUser.id;
+  const {id} = req.params;
+  wishlistModels.deleteItemWishlist(id, (err,result)=>{
+    return response(res, 'Item is remove from Wishlist',result);
+  });
+};

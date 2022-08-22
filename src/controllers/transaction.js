@@ -24,3 +24,13 @@ exports.getChartById = (req, res) => {
     return response(res, "good job", result);
   });
 };
+
+exports.decreaseQuantityProduct = (req, res) => {
+  transactionModel.editQuantity(req.body, (err, result) => {
+    if (err) {
+      return errorResponse(err, res);
+    } else {
+      return response(res, "Edit user successfully", result[0]);
+    }
+  });
+};
