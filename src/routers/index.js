@@ -7,5 +7,6 @@ router.use('/profile', require('./profile'));
 router.use('/add_chart', require('./transaction'));
 router.use('/get_chart', require('./transaction'));
 router.use('/payment', require('./payment'));
+router.use('/wishlist', require('./wishlist'));
 
 module.exports = router;

@@ -1,5 +1,5 @@
-const response = require("../helpers/standardResponse");
-const paymentModel = require("../models/payment");
+const response = require('../helpers/standardResponse');
+const paymentModel = require('../models/payment');
 
 exports.createPayment = (req, res) => {
   //   console.log(req.body);
@@ -7,9 +7,9 @@ exports.createPayment = (req, res) => {
   paymentModel.createPayment(req.body, (err, resultCreate) => {
     paymentModel.editStatusOrder(
       resultCreate[0].order_id,
-      "paid",
+      'paid',
       (err, resultDelete) => {
-        return response(res, "good job", resultCreate);
+        return response(res, 'good job', resultCreate);
       }
     );
   });
