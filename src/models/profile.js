@@ -114,8 +114,10 @@ exports.updateProfile=(id, picture, email, data, cb)=>{
 
           for(let x in obj){
             if(obj[x]!==null){
-              filtered[x] = obj [x];
-              val.push(obj[x]);
+              if(obj[x]!==undefined){
+                filtered[x] = obj [x];
+                val.push(obj[x]);
+              }
             }
           }
 

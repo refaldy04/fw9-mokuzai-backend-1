@@ -11,6 +11,7 @@ exports.getFavoriteByIdAndProductId = (user_id, cb) =>{
   const q = 'SELECT * FROM favorite WHERE product_id=$1';
   const val = [user_id];
   db.query(q, val, (err,res)=>{
+    console.log(err);
     cb(err, res);
   });
 };

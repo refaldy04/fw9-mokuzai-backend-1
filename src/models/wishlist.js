@@ -7,14 +7,6 @@ exports.getAllWishlist = (user_id,cb) => {
   });
 };
 
-exports.addItems = (data, cb) =>{
-  const q = 'INSERT INTO cart (quantity, product_id) VALUES($1, $2) RETURNING *';
-  const val = [data.quantity, data.product_id];
-  db.query(q, val, (err,res)=>{
-    cb(err,res);
-  });
-};
-
 exports.getWishlistById = (product_id, cb) =>{
   const q = 'SELECT product_name, product_stock, product_price, product_picture FROM wishlist INNER JOIN product_details ON product_details.id = wishlist.product_id WHERE product_id = $1';
   const val = [product_id];

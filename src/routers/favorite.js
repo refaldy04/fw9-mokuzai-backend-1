@@ -7,5 +7,4 @@ favorite.get('/favoriteid', authMw,favoriteControll.getFavoriteByIdAndProductId)
 favorite.post('/add', authMw,favoriteControll.addItemFavorite);
 favorite.delete('/delete/:id', authMw, favoriteControll.deleteItemFavorite);
 
-
 module.exports=favorite;
