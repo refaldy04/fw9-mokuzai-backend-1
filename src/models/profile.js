@@ -90,55 +90,6 @@ exports.createProfileAfterRegister = (data, cb) => {
   });
 };
 
-// exports.updateProfile = (id, picture, email, data, cb) => {
-//   db.query('BEGIN', err => {
-//     if (err){
-//       console.log(err);
-//     }else{
-//       const q = 'UPDATE users SET email=$1 WHERE id=$2 RETURNING *';
-//       db.query(q, [email, id], (err, res) => {
-        
-//         if (err) {
-//           console.log(err);
-//         }else{
-//           let val = [id];
-
-//           const filtered = {};
-//           const obj = {
-//             picture,
-//             gender: data.gender,
-//             store_name: data.store_name,
-//             store_desc: data.store_desc,
-//           };
-//           for(let x in obj){
-//             if(obj[x]!==null){
-//               filtered[x] = obj [x];
-//               val.push(obj[x]);
-//             }
-//           }
-        
-//           const key = Object.keys(filtered);
-//           const finalResult = key.map((o, ind) => `${o}=$${ind+2}`);
-        
-//           const q1 = `UPDATE profile SET ${finalResult} WHERE user_id=$1 RETURNING *`;
-//           const show = [res.rows];
-//           db.query(q1, val, show, (err, res) => {
-//             if (err) {
-//               console.log(err);
-//             }else{
-//               cb(err,res);
-//               db.query('COMMIT', err => {
-//                 if (err) {
-//                   console.error('Error committing transaction', err.stack);
-//                 }
-//               });
-//             }
-//           });
-//         }
-//       });
-//     }
-//   });
-// };
 
 exports.updateProfile=(id, picture, email, data, cb)=>{
   // console.log(picture);
@@ -191,6 +142,35 @@ exports.updateProfile=(id, picture, email, data, cb)=>{
           });
         }
       });
+    }
+  });
+};
+
+exports.updateEmail = (id, data, cb)=>{
+  let val = [id];
+
+  const filtered = {};
+  const obj = {
+    email: data.email
+  };
+
+  for(let x in obj){
+    if(obj[x]!==null){
+      filtered[x] = obj [x];
+      val.push(obj[x]);
+    }
+  }
+
+  const key = Object.keys(filtered);
+  const finalResult = key.map((o, ind) => `${o}=$${ind+2}`);
+
+  const q = `UPDATE users SET ${finalResult} WHERE id=$1 RETURNING *`;
+  db.query(q, val, (err,res)=>{
+    //console.log(res);
+    if(err){
+      cb(err);
+    }else{
+      cb(err, res);
     }
   });
 };

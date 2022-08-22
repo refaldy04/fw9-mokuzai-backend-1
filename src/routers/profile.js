@@ -9,4 +9,5 @@ const authMw = require('../middleware/auth');
 profile.get('/', authMw,profilesControll.getProfilebyId);
 profile.post('/', authMw, uploadFile, profilesControll.createProfiles);
 profile.patch('/edit', authMw, validationCheck, uploadFile, profilesControll.updateProfiles);
+profile.patch('/edit-email', authMw, validationCheck, profilesControll.updateEmail);
 module.exports = profile;

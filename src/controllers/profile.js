@@ -47,3 +47,13 @@ exports.updateProfiles = (req, res) =>{
     }
   });
 };
+
+exports.updateEmail = (req,res) => {
+  const user_id= req.authUser.id;
+  profileModels.updateEmail(user_id, req.body, (err,result)=>{
+    if(err){
+      return errorResponse(err,res);
+    }
+    return response(res,'Email Edited', result.rows[0]);
+  });
+};
