@@ -15,3 +15,18 @@ exports.getFavoriteByIdAndProductId = (user_id, cb) =>{
     cb(err, res);
   });
 };
+
+exports.addItemFavorite = (user_id, data, cb) =>{
+  const q = 'INSERT INTO cart (quantity , product_id, user_id) VALUES ($1, $2, $3) RETURNING *';
+  db.query(q, [1, data.product_id, user_id], (err,res)=>{
+    cb(err,res.rows);
+  });
+};
+
+exports.deleteItemFavorite = (id, cb) =>{
+  const q = 'DELETE FROM favorite WHERE id = $1 RETURNING *';
+  const val = [id];
+  db.query(q, val, (err,res)=>{
+    cb(err, res.rows);
+  });
+};

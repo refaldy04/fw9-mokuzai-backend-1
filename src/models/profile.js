@@ -8,8 +8,7 @@ exports.getAllProfile = (cb) => {
 };
 
 exports.getProfilebyId = (user_id, cb) =>{
-  // const q = 'SELECT * FROM profile WHERE id=$1';
-  const q = 'SELECT email, gender, store_name, store_desc, picture FROM profile INNER JOIN users on users.id = profile.user_id WHERE user_id = $1';
+  const q = 'SELECT email, name, gender, store_name, store_desc, picture FROM profile INNER JOIN users on users.id = profile.user_id WHERE user_id = $1';
   const val = [user_id];
   db.query(q, val, (err, res)=>{
     return cb(err, res);
@@ -90,9 +89,7 @@ exports.createProfileAfterRegister = (data, cb) => {
   });
 };
 
-
 exports.updateProfile=(id, picture, email, data, cb)=>{
-  // console.log(picture);
   db.query('BEGIN', err =>{
     if(err){
       cb(err);
@@ -100,18 +97,16 @@ exports.updateProfile=(id, picture, email, data, cb)=>{
       const queryUser = 'UPDATE users SET email=$1 WHERE id=$2 RETURNING *';
       const valUser = [email, id];
       db.query(queryUser,valUser,(err,res)=>{
-        // console.log(res);
         if(err){
           cb(err);
         }else{
           let val = [id];
           const user_id = res.rows[0].id;
-          // console.log('user test');
-          // console.log(user_id);
           const filtered = {};
           const obj = {
             user_id,
             picture,
+            name: data.name,
             gender: data.gender,
             store_name: data.store_name,
             store_desc: data.store_desc,
@@ -119,8 +114,10 @@ exports.updateProfile=(id, picture, email, data, cb)=>{
 
           for(let x in obj){
             if(obj[x]!==null){
-              filtered[x] = obj [x];
-              val.push(obj[x]);
+              if(obj[x]!==undefined){
+                filtered[x] = obj [x];
+                val.push(obj[x]);
+              }
             }
           }
 
