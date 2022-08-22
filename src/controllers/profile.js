@@ -4,7 +4,6 @@ const profileModels = require ('../models/profile');
 
 
 exports.getAllProfiles = (req, res)=>{
-  
   profileModels.getAllProfile((err, result) =>{
     return response(res, 'Get All Profile', result);
   });
