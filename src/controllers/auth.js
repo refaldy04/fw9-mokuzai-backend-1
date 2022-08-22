@@ -23,11 +23,14 @@ exports.login = (req, res)=>{
       return response(res, 'User Not Found', null, null, 400);
     }
     const user = results.rows[0];
+    const user_id =  results.rows[0].id;
+    const roles =  results.rows[0].roles;
+    console.log(user);
     bcrypt.compare(password, user.password)
       .then((cpRes)=>{
         if(cpRes){
           const token = jwt.sign({id: user.id}, APP_SECRET || 'D3f4uLt');
-          return response(res, 'Login Success', {token});
+          return response(res, 'Login Success', {token, user_id, roles });
         }
         return response(res, 'Check your email and pasword', null, null, 400);
 

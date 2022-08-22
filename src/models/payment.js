@@ -15,13 +15,29 @@ exports.createPayment = (data, cb) => {
   });
 };
 
-// exports.deleteOrder = (id, cb) => {
-//   console.log(id);
-//   const query = "DELETE FROM order WHERE id=$1 RETURNING *";
-//   const value = [id];
-//   console.log(value);
-//   db.query(query, value, (err, res) => {
-//     console.log(err);
-//     // cb(res.rows);
-//   });
-// };
+exports.deleteOrder = (id, cb) => {
+  console.log(id);
+  const query = "DELETE FROM order WHERE id=$1 RETURNING *";
+  const value = [id];
+  console.log(value);
+  db.query(query, value, (err, res) => {
+    console.log(err);
+    // cb(res.rows);
+  });
+};
+
+exports.editStatusOrder = (id, status, cb) => {
+  console.log(id);
+  console.log(status);
+  const query = "UPDATE orders SET status=$1 WHERE id=$2 RETURNING *";
+  const value = [status, id];
+  db.query(query, value, (err, res) => {
+    if (res) {
+      // console.log(res);
+      cb(err, res.rows);
+    } else {
+      console.log(err);
+      cb(err);
+    }
+  });
+};
