@@ -8,6 +8,7 @@ product.get('/', productController.showAllProduct);
 product.get('/ProductSeller',authMiddle,productController.showProductSeller);
 product.get('/:category_name',authMiddle,productController.showProductByCategory);
 product.get('/archive/:archive_status',authMiddle,productController.showProductByArchive);
+product.get('/details/:id',authMiddle,productController.detailProduct);
 product.patch('/:id',authMiddle,upload,productController.editProduct);
 product.delete('/:id',authMiddle, productController.deleteProduct);
 
