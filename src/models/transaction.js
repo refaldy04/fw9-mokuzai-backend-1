@@ -21,3 +21,18 @@ exports.getCartById = (id, cb) => {
     cb(err, res.rows);
   });
 };
+
+exports.editQuantity = (data, cb) => {
+  const query =
+    "UPDATE product_details SET product_stock=$1 WHERE id=$2 RETURNING *";
+  const value = [data.product_stock, data.id];
+  db.query(query, value, (err, res) => {
+    if (res) {
+      // console.log(res);
+      cb(err, res.rows);
+    } else {
+      console.log(err);
+      cb(err);
+    }
+  });
+};
