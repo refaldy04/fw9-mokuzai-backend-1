@@ -28,7 +28,6 @@ exports.editQuantity = (data, cb) => {
   const value = [data.stock_selled, data.id];
   db.query(query, value, (err, res) => {
     if (res) {
-      // console.log(res);
       cb(err, res.rows);
     } else {
       console.log(err);
