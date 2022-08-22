@@ -16,7 +16,11 @@ exports.createCart = (data, cb) => {
 };
 
 exports.getCartById = (id, cb) => {
-  db.query("SELECT * FROM cart WHERE user_id=$1", [id], (err, res) => {
+  db.query(`SELECT cart.id,
+  cart.quantity,
+    product_details.product_name,
+    product_details.product_price,
+    product_details.picture1 FROM cart  INNER JOIN product_details  ON cart.product_id  = product_details.id WHERE cart.user_id=$1`, [id], (err, res) => {
     cb(err, res.rows);
   });
 };
