@@ -42,7 +42,7 @@ exports.createProduct = (data, picture1, picture2, picture3, picture4, user_id, 
 };
 
 exports.showAllProduct=(searchBy,keyword,orderBy,order,limit=parseInt(LIMIT_DATA), offset=0,cb)=>{
-  const que = `SELECT 
+  const que = `SELECT product_details.id,
   product_name,
   product_desc,
   product_price,
@@ -169,7 +169,7 @@ exports.deleteProduct = (id, cb) => {
 };
 
 exports.showProductSeller=(id,searchBy,keyword,orderBy,order,limit=parseInt(LIMIT_DATA), offset=0,cb)=>{
-  const que = `SELECT product_name,
+  const que = `SELECT product_details.id, product_name,
   product_desc,
   product_price,
   product_stock,
@@ -209,7 +209,7 @@ exports.countshowProductSeller=(id,searchBy,keyword,cb)=>{
 
 exports.showProductByCategory=(category_name,searchBy,keyword,orderBy,order,limit=parseInt(LIMIT_DATA), offset=0,cb)=>{
 
-  const que = `SELECT product_name,
+  const que = `SELECT product_details.id, product_name,
   product_desc,
   product_price,
   product_stock,
@@ -249,7 +249,7 @@ exports.countProductByCategory=(category_name,searchBy,keyword,cb)=>{
 
 exports.showProductByArchive=(archive_status,searchBy,keyword,orderBy,order,limit=parseInt(LIMIT_DATA), offset=0,cb)=>{
 
-  const que = `SELECT product_name,
+  const que = `SELECT product_details.id, product_name,
   product_desc,
   product_price,
   product_stock,
