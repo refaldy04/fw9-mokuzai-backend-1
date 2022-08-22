@@ -5,6 +5,7 @@ const {DATA_LIMIT} = process.env;
 
 exports.createProduct = (req,res) =>{
   console.log(req.body);
+  console.log('aaaaaaaaaaaaaaaa');
   console.log(req.files);
   const user_id= req.authUser.id;
   const category_id= req.body.category_id;
@@ -139,5 +140,16 @@ exports.showProductByArchive = (req,res) => {
       pageInfo.prevPage = pageInfo.curretPage > 1 ? pageInfo.curretPage-1:null;
       return response(res,'Archived Product',result.rows,pageInfo);
     });
+  });
+};
+
+exports.detailProduct = (req, res)=>{
+  const {id} =req.params;
+  product.detailProduct(id, (err, results)=>{
+    if(results.length > 0 ){
+      return response(res, 'Product Details', results[0]); 
+    }else{
+      return res.redirect('/404');
+    }
   });
 };
