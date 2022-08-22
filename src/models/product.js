@@ -286,3 +286,24 @@ exports.countProductByArchive=(archive_status,searchBy,keyword,cb)=>{
     }
   });
 };
+
+
+exports.detailProduct = (id, cb) => {
+  const quer = `SELECT 
+  product_name,
+  product_desc,
+  product_price,
+  product_stock,
+  product_condition,
+  picture1,
+  picture2,
+  picture3,
+  picture4, archive_status, category_name FROM product_details  INNER JOIN category  ON product_details.category_id  = category.id WHERE product_details.id=$1`;
+  const value = [id];
+  db.query(quer, value, (err, res)=>{
+    if(err) {
+      cb(err);
+    }
+    cb(err, res.rows);
+  });
+};
