@@ -6,5 +6,6 @@ const authMiddle = require('../middleware/auth');
 payment.post('/', paymentController.createPayment);
 payment.post('/new', authMiddle, newPaymentController.createPayment);
 payment.patch('/edit/:id', authMiddle, newPaymentController.editPayment);
+payment.patch('/edit-status/:id', authMiddle, newPaymentController.editStatus);
 
 module.exports = payment;
